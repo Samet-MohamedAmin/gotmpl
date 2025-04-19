@@ -91,9 +91,8 @@ EOF
 Easy and fast go template
 
 ## Features
-- Modular design for easy maintenance and scalability.
-- Example configurations and templates for quick setup.
 - Organized folder structure for better code management.
+- Modular design for easy maintenance and scalability.
 
 ## Folder Structure
 ```
