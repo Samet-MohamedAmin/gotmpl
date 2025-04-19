@@ -1,4 +1,91 @@
-# Project Name
+# gotmpl
+Fast way to generate go-templates
+
+## Example
+
+### Quick run
+Need to have template and data files under `templates` dir.
+
+
+```bash
+go install github.com/Samet-MohamedAmin/gotmpl@v0.1.2
+```
+
+Run:
+``` bash
+$ gotmpl
+Searching for templates in templates
+Looking for template: ALL
+Found template: templates/example/template.go.tmpl
+Processing template: templates/example/template.go.tmpl
+Data path constructed: templates/example/data.yaml
+Looking for data file: templates/example/data.yaml
+Output directory path: example
+Template name: example
+Generated output file: output/example/welcome/hello.txt
+Generated output file: output/example/example-01.txt
+Generated output file: output/example/example-02.txt
+```
+
+Output:
+```bash
+$ tree
+.
+├── output
+│   └── example
+│       ├── example-01.txt
+│       ├── example-02.txt
+│       └── welcome
+│           └── hello.txt
+└── templates
+    └── example
+        ├── data.yaml
+        └── template.go.tmpl
+
+6 directories, 5 files
+```
+
+If you want to create test files, follow the next step.
+
+
+### Dummy template and data file
+You can run `gotmpl` under `example` dir.
+Or you can create new files with the following commands:
+
+```bash
+dir=templates/example
+
+# create template dir
+mkdir -p "$dir"
+
+# create template file
+cat <<EOF > "$dir/template.go.tmpl"
+# config ext=txt
+---
+# file: welcome/hello.txt
+Hello, {{ .Name }}!
+You have {{ .Count }} new messages.
+
+{{- range \$index, \$item := .Items}}
+- {{ printf "%02d" \$index }}-{{ \$item }}
+{{- end}}
+
+---
+file 2
+---
+file 3
+EOF
+
+# create data file
+cat <<EOF > "$dir/data.yaml"
+Name: Charlie
+Count: 5
+Items:
+  - Item 1
+  - Item 2
+EOF
+```
+
 
 ## Overview
 Easy and fast go template
