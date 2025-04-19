@@ -1,1 +1,5 @@
+OutputDir: "output"
 OutputExtension: ".yaml"
+TemplateFile: "template.go.tmpl"
+DataFile: "data.yaml"
+DefaultPrefix: "file"
