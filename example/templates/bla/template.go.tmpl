@@ -1,0 +1,14 @@
+# config separate=false ext=txt
+---
+# file: ss/kk.json
+Hello, {{ .Name }}!
+You have {{ .Count }} new messages.
+
+{{- range $index, $item := .Items}}
+- {{ printf "%02d" $index }}-{{ $item }}
+{{- end}}
+
+---
+file 2
+---
+file 3

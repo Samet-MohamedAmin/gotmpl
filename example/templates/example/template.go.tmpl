@@ -1,0 +1,17 @@
+
+# not the first line
+# config ext=kk
+
+Hello, {{ .Name }}!
+You have {{ .Count }} new messages.
+
+{{- range $index, $item := .Items}}
+- {{ printf "%02d" $index }}-{{ $item }}
+{{- end}}
+
+---
+file 2
+---
+file 3
+---
+file 3
