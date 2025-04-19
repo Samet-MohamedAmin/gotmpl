@@ -11,9 +11,12 @@ Need to have template and data files under `templates` dir.
 go install github.com/Samet-MohamedAmin/gotmpl@v0.1.2
 ```
 
-Run:
+```bash
+gotmpl
+```
+
+Output:
 ``` bash
-$ gotmpl
 Searching for templates in templates
 Looking for template: ALL
 Found template: templates/example/template.go.tmpl
@@ -27,7 +30,7 @@ Generated output file: output/example/example-01.txt
 Generated output file: output/example/example-02.txt
 ```
 
-Output:
+Result:
 ```bash
 $ tree
 .
