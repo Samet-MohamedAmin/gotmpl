@@ -1,159 +1,63 @@
 # gotmpl
-Fast way to generate go-templates
 
-## Example
+A powerful Go template processor for generating files from templates using YAML data. Perfect for code generation, configuration management, and documentation workflows.
 
-### Quick run
-Need to have template and data files under `templates` dir.
+## Quick Links
 
-
-```bash
-go install github.com/Samet-MohamedAmin/gotmpl@v0.1.2
-```
-
-```bash
-gotmpl
-```
-
-Output:
-``` bash
-Searching for templates in templates
-Looking for template: ALL
-Found template: templates/example/template.go.tmpl
-Processing template: templates/example/template.go.tmpl
-Data path constructed: templates/example/data.yaml
-Looking for data file: templates/example/data.yaml
-Output directory path: example
-Template name: example
-Generated output file: output/example/welcome/hello.txt
-Generated output file: output/example/example-01.txt
-Generated output file: output/example/example-02.txt
-```
-
-Result:
-```bash
-$ tree
-.
-├── output
-│   └── example
-│       ├── example-01.txt
-│       ├── example-02.txt
-│       └── welcome
-│           └── hello.txt
-└── templates
-    └── example
-        ├── data.yaml
-        └── template.go.tmpl
-
-6 directories, 5 files
-```
-
-If you want to create test files, follow the next step.
-
-
-### Dummy template and data file
-You can run `gotmpl` under `example` dir.
-Or you can create new files with the following commands:
-
-```bash
-dir=templates/example
-
-# create template dir
-mkdir -p "$dir"
-
-# create template file
-cat <<EOF > "$dir/template.go.tmpl"
-# config ext=txt
----
-# file: welcome/hello.txt
-Hello, {{ .Name }}!
-You have {{ .Count }} new messages.
-
-{{- range \$index, \$item := .Items}}
-- {{ printf "%02d" \$index }}-{{ \$item }}
-{{- end}}
-
----
-file 2
----
-file 3
-EOF
-
-# create data file
-cat <<EOF > "$dir/data.yaml"
-Name: Charlie
-Count: 5
-Items:
-  - Item 1
-  - Item 2
-EOF
-```
-
-
-## Overview
-Easy and fast go template
+- [Installation Guide](docs/installation.md)
+- [User Guide](docs/user-guide.md)
+- [Template Reference](docs/template-reference.md)
+- [CLI Reference](docs/cli-reference.md)
+- [Configuration Guide](docs/configuration.md)
+- [Examples](docs/examples.md)
 
 ## Features
-- Organized folder structure for better code management.
-- Modular design for easy maintenance and scalability.
 
-## Folder Structure
-```
-config.yaml       # Main configuration file
-go.mod            # Go module file
-go.sum            # Go dependencies checksum
-main.go           # Entry point of the application
-README.md         # Project documentation
-cmd/              # Command-line related code
-example/          # Example configurations and outputs
-pkg/              # Core packages for configuration and template processing
-```
+- 🚀 **High performance template processing**
+- 📦 **Multiple output files from a single template**
+- 🧩 **Template-specific configurations**
+- 📂 **Organized output with directory structure preservation**
+- 🧰 **Rich command-line interface**
+- 🔍 **Smart template and data discovery**
+- 🔄 **YAML document separator support**
+- ⚙️ **Flexible configuration system**
 
-## Getting Started
+## Quick Start
 
-### Prerequisites
-- Go 1.20 or later
-- Linux OS (recommended)
-
-### Installation
-1. Clone the repository:
+1. Install gotmpl:
    ```bash
-   git clone https://github.com/Samet-MohamedAmin/gotmpl.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd <repository-name>
-   ```
-3. Install dependencies:
-   ```bash
-   go mod tidy
+   go install github.com/Samet-MohamedAmin/gotmpl@latest
    ```
 
-## Usage
-
-```
-Usage of gotmpl:
-  This program processes template files with YAML data.
-  Template files should be in the templates directory with extension .go.tmpl
-  Data files should be in the templates directory with extension .yaml
-
-  -clean
-        Clean output directory before processing templates (default true)
-  -config string
-        Path to the configuration file (default "config.yaml")
-  -help
-        Show help message
-  -separate
-        Split output into multiple files at YAML document separators (---) (default true)
-  -template string
-        Template to process (use ALL for all templates) (default "ALL")
-  -version
-        Print the version and exit
-```
-
-1. Run the application:
+2. Create a template and data file:
    ```bash
-   go run main.go
+   mkdir -p templates/example
    ```
-2. Use the example configurations in the `example/` folder to test the application.
+
+3. Generate files:
+   ```bash
+   gotmpl gen ./templates
+   ```
+
+For detailed instructions, see the [User Guide](docs/user-guide.md).
+
+## Project Structure
+
+```
+.
+├── cmd/               # Command-line interface
+├── pkg/              # Core packages
+│   ├── config/      # Configuration handling
+│   └── template/    # Template processing
+├── docs/            # Documentation
+└── example/         # Example configurations
+```
+
+## Contributing
+
+Contributions are welcome! Please see our [Contributing Guide](docs/contributing.md) for details.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
