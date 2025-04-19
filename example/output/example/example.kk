@@ -1,6 +1,4 @@
-
-# not the first line
-# config ext=kk
+# config ext=kk separate=false
 
 Hello, Charlie!
 You have 5 new messages.
@@ -9,3 +7,9 @@ You have 5 new messages.
 - 02-Item 3
 - 03-Item 4
 
+---
+file 2
+---
+file 3
+---
+file 3
